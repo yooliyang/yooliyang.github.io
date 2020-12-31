@@ -161,7 +161,7 @@ npm由3大独立部分组成：
 <p>4、打开GitHub_Settings_keys 页面，新建new SSH Key<br>Title为标题，任意填即可，将刚刚复制的id_rsa.pub内容粘贴进去，最后点击Add SSH key<br><img src="/2020/12/31/Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/GitHubNewSSHkey.png" alt="image"></p>
 <p>5、检测GitHub公钥设置是否成功，如下图所示则为成功。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh git@github.com  <span class="comment">#检测GitHub公钥设置是否成功</span></span><br></pre></td></tr></table></figure>
-<p><img src="/2020/12/31/Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/CheckSSHkey.png" alt="image"><br>·备注：这里之所以设置GitHub密钥原因是，通过非对称加密的公钥与私钥来完成加密，公钥放置在GitHub上，私钥放置在自己的电脑里。GitHub要求每次推送代码都是合法用户，所以每次推送都需要输入账号密码验证推送用户是否是合法用户，为了省去每次输入密码的步骤，采用了ssh，当你推送的时候，git就会匹配你的私钥跟GitHub上面的公钥是否是配对的，若是匹配就认为你是合法用户，则允许推送。这样可以保证每次的推送都是正确合法的。</p>
+<p><img src="/2020/12/31/Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/LookSSHkey.png" alt="image"><br>·备注：这里之所以设置GitHub密钥原因是，通过非对称加密的公钥与私钥来完成加密，公钥放置在GitHub上，私钥放置在自己的电脑里。GitHub要求每次推送代码都是合法用户，所以每次推送都需要输入账号密码验证推送用户是否是合法用户，为了省去每次输入密码的步骤，采用了ssh，当你推送的时候，git就会匹配你的私钥跟GitHub上面的公钥是否是配对的，若是匹配就认为你是合法用户，则允许推送。这样可以保证每次的推送都是正确合法的。</p>
 <p>1、下载安装 Nodejs、git、vsCode 工具（均直接默认下一步）；创建 github 账号，创建 Hexo 文件夹（位置可任意）<br>2、创建github仓库（New repository），名称一般定义为 githubname.github.io<br>3、在Hexo文件夹下面安装配置Hexo，安装时可在该目录下shift+右键打开控制台安装，配置时用 git Bash Here 工具配置</p>
 
 </div>
