@@ -144,24 +144,25 @@
 	<h1 id="1-基础介绍"><a href="#1-基础介绍" class="headerlink" title="1 基础介绍"></a>1 基础介绍</h1><p>·什么是GitHub？</p>
 <pre><code>GitHub是一个面项开源及私有软件项目的托管平台，因为只支持Git作为唯一的版本库格式进行托管，故名GitHub。</code></pre>
 <p>·什么是npm？</p>
-<pre><code>npm是nodejs内置的软件包管理器，全称（node package management）。要使用npm这个软件包管理工具，最常见的方法就是在电脑上安装[nodejs](https://nodejs.org/en/)（注意要安装含LTS的版本）。因为nodejs软件内置了npm，所以windows系统在安装nodejs后，打开cmd即可使用npm下载资源；Linux安装nodejs后，打开终端，即可使用npm命令下载资源。安装nodejs后，打开[npm](https://www.npmjs.com/)官网，可在输入框中查找需要的软件包信息。</code></pre>
-<p><img src="/2020/12/31/Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/npmDownload.png"></p>
-<pre><code>npm是世界上最大的软件注册表，每周大概有30亿的下载量，包含超过600000个包【（包）即：代码模块】。来自各大洲开源软件的开发者使用npm相互分享和借鉴，因此包的结构能使用户能够轻松跟踪依赖版项和版本。
+<pre><code>npm是nodejs内置的软件包管理器，全称（node package management）。要使用npm这个软件包管理工具，最常见的方法就是在电脑上安装[nodejs](https://nodejs.org/en/)（注意要安装含LTS的版本）。因为nodejs软件内置了npm，所以windows系统在安装nodejs后，打开cmd即可使用npm下载资源；Linux安装nodejs后，打开终端，即可使用npm命令下载资源。安装nodejs后，打开[npm](https://www.npmjs.com/)官网，可在输入框中查找需要的软件包信息。
+![](npmDownload.png)
+
+npm是世界上最大的软件注册表，每周大概有30亿的下载量，包含超过600000个包【（包）即：代码模块】。来自各大洲开源软件的开发者使用npm相互分享和借鉴，因此包的结构能使用户能够轻松跟踪依赖版项和版本。
 
 npm由3大独立部分组成：
     （1）网站：开发者查找包（package）、设置参数以及管理[npm](https://www.npmjs.com/)使用体验的主要途径
     （2）注册表：是一个巨大的数据库，保存了每个包的基本信息
     （3）命令行工具：开发者与npm包打交道的工具</code></pre>
-<p>·什么是Hexo？<br><img src="/2020/12/31/Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/npmDownload.png"></p>
+<p>·什么是Hexo？</p>
 <pre><code>Hexo是一款基于Node.js的静态博客框加，依赖少，并且易于安装使用。Hexo可以方便的生成静态网页，托管在GitHub和Heroku上，是搭建博客的首选框架。（Hexo的创始者是台湾人，因此对中文支持很友好）</code></pre>
-<h1 id="2-主要工具"><a href="#2-主要工具" class="headerlink" title="2 主要工具"></a>2 主要工具</h1><p>github、Nodejs、git、Hexo、vsCode</p>
+<h1 id="2-主要工具"><a href="#2-主要工具" class="headerlink" title="2 主要工具"></a>2 主要工具</h1><pre><code>github、Nodejs、git、Hexo、vsCode</code></pre>
 <h1 id="3-搭建大纲"><a href="#3-搭建大纲" class="headerlink" title="3 搭建大纲"></a>3 搭建大纲</h1><p>1、获取个人网站域名（可以没有）<br>2、GitHub平台创建个人仓库（New repository）<br>3、安装 Nodejs、git、vsCode 工具（均直接默认下一步）<br>4、安装npm<br>5、安装 Hexo（自定义位置创建Hexo文件夹）<br>6、推送网站<br>7、绑定域名（有个人域名情况下）<br>8、更换主题<br>9、创建文章<br>10、发布文章<br>11、寻找图床<br>12、个性化设置<br>13、其他<br>14、附录</p>
 <h1 id="4-搭建流程"><a href="#4-搭建流程" class="headerlink" title="4 搭建流程"></a>4 搭建流程</h1><p>·检查安装结果<br><img src="/2020/12/31/Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/InstallSuccess.png"></p>
 <p>·安装好各工具后，进行搭建博客，具体搭建步骤如下：</p>
 <h2 id="4-1-GitHub创建个人仓库"><a href="#4-1-GitHub创建个人仓库" class="headerlink" title="4.1 GitHub创建个人仓库"></a>4.1 GitHub创建个人仓库</h2><p>1、<a target="_blank" rel="noopener" href="https://github.com/">GitHub</a>官网创建账户<br>2、创建个人仓库<br><img src="/2020/12/31/Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/GitHubNewRepository.png"><br>3、任意位置鼠标右键打开git Bash Here<br>·配置user.name和user.email信息：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name <span class="string">&quot;你的GitHub用户名&quot;</span></span><br><span class="line">$ git config --global user.email <span class="string">&quot;你的GitHub注册邮箱&quot;</span></span><br></pre></td></tr></table></figure>
 <p>·生成ssh密钥文件：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C <span class="string">&quot;你的GitHub注册邮箱&quot;</span>  </span><br><span class="line"><span class="comment">#直接三个回车即可，不需要设置密码</span></span><br><span class="line"><span class="comment">#生成密钥后，找到生成的 .ssh 的文件夹中的 id_rsa.pub 密钥文件，将内容全部复制</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C <span class="string">&quot;你的GitHub注册邮箱&quot;</span> </span><br><span class="line"><span class="comment">#直接三个回车即可，不需要设置密码</span></span><br><span class="line"><span class="comment">#生成密钥后，找到生成的 .ssh 的文件夹中的 id_rsa.pub 密钥文件，将内容全部复制</span></span><br></pre></td></tr></table></figure>
 <p>4、打开GitHub_Settings_keys 页面，新建new SSH Key<br>Title为标题，任意填即可，将刚刚复制的id_rsa.pub内容粘贴进去，最后点击Add SSH key<br><img src="/2020/12/31/Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/GitHubNewSSHkey.png"></p>
 <p>5、检测GitHub公钥设置是否成功，如下图所示则为成功。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh git@github.com  <span class="comment">#检测GitHub公钥设置是否成功</span></span><br></pre></td></tr></table></figure>
