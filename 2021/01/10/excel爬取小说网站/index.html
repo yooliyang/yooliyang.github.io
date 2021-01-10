@@ -8,6 +8,8 @@
 	<!-- title -->
 	
 	<title>
+	
+		excel爬取小说网站 | 
 	 
 	Hexo
 	</title>
@@ -118,7 +120,7 @@
 							</ul>
 			
 							<ul>
-								<li class="file">
+								<li class="file active">
 									<a href="/2021/01/10/excel%E7%88%AC%E5%8F%96%E5%B0%8F%E8%AF%B4%E7%BD%91%E7%AB%99/">
 										excel爬取小说网站
 									</a>
@@ -132,52 +134,71 @@
 
 	<!-- 引入正文 -->
 	<div id="content">
-		<div id="index">
+		<h1 id="article-title">
+
+	excel爬取小说网站
+</h1>
+<div class="article-meta">
 	
-		<div class="index-li">
-			<a href="/2020/12/31/MarkDown%E8%AF%AD%E6%B3%95/">
-				<h2 class="index-title">
-					MarkDown语法
-				</h2>
-				<div class="index-brief">
-					给Hexo加超链接Hexo!
-一级标题二级标题三级标题1加边框
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2020-12-31</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2020/12/31/Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/">
-				<h2 class="index-title">
-					Hexo博客搭建教程
-				</h2>
-				<div class="index-brief">
-					1 基础介绍·什么是GitHub？    GitHub是一个面项开源及私有软件项目的托管平台，因为只支持Git作为唯一的版本库格式进行托管，故名GitHub。
-·什么是npm？    npm是nodejs内置的软件包管理器，全称（node package management）。要使用npm这个软件
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2020-12-31</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-	
-	<div id="index-paginator">
-		
-	</div>
+	<span>yooliyang</span>
+	<span>2021-01-10 23:39:04</span>
+    
+		<div id="article-categories">
+            
+		</div>
+    
 </div>
 
+<div id="article-content">
+	<p>#提取某本书每个目录网址<br>import re<br>import requests #加载requests模块,这是第三方库,需要安装后使用<br>import xlwt #加载excel的写入模块<br>import xlrd #读取模块</p>
+<p>#获取网页<br>url=’<a target="_blank" rel="noopener" href="https://www.xs4.cc/0_4/&#39;">https://www.xs4.cc/0_4/&#39;</a> #需要进行爬虫的网址<br>url2=re.findall(‘<a target="_blank" rel="noopener" href="https://www.xs4.cc/(.*?)/&#39;,url)[0]">https://www.xs4.cc/(.*?)/&#39;,url)[0]</a> #提取书名最后一段<br>req=requests.get(url) #获取网页内容<br>req.encoding=’gbk’ #将编码转为GBK,解决乱码问题</p>
+<p>#获取书名<br>book_name=re.findall(‘</p><h1>(.*?)</h1>‘,req.text)[0] <p></p>
+<p>#获取目录<br>mulu=re.findall(‘html”&gt;(.*?)‘,req.text)<br>wangzhi=re.findall(f’<a href="/{url2}/(.*?).html">‘,req.text,re.S)</a></p>
+<p>#生成字典，主要是为了取键值对<br>dict1={}<br>for i in range(9,len(mulu)):<br>    dict1[mulu[i]]=f’{url}{wangzhi[i]}.html’ #将目录和网址存放到字典中</p>
+<p>#存入excel中<br>excel1=xlwt.Workbook() #实例化一个excel<br>worksheet=excel1.add_sheet(f’{book_name}’) #新建一个sheet<br>worksheet.write(0,0,’目录’) #行,列,值<br>worksheet.write(0,1,’网址’) #行,列,值<br>row=1<br>for k,v in dict1.items(): #遍历字典的键与值<br>    worksheet.write(row,0,k) #将目录写到excel<br>    worksheet.write(row,1,v) #将网址写到excel<br>    row+=1 #相当于行号，第0行被标题用了，不写的话，只会写在同一行<br>excel1.save(f’d:/{book_name}.xls’) #保存文件</p>
+<p>#读取excel文件<br>data=xlrd.open_workbook(f’d:/{book_name}.xls’)<br>sheet1=data.sheets()[0] #读取文件的第一个sheet页<br>print(sheet1.nrows) #返回excel的有效行数<br>for i in range(1,sheet1.nrows):<br>    print(sheet1.cell_value(i,0),sheet1.cell_value(i,1)) #获取单元格内容</p>
+<p>#存入txt文件中【非excel存储时才用】<br>#with open(‘f:/{book_name}q.txt’,’w’) as f2:<br>#for k, v in dict1.items():<br>#f2.write(k+v+’\n’)</p>
+
+</div>
+
+
+    <div class="post-guide">
+        <div class="item left">
+            
+        </div>
+        <div class="item right">
+            
+              <a href="/2020/12/31/MarkDown%E8%AF%AD%E6%B3%95/">
+                MarkDown语法
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            
+        </div>
+    </div>
+
+
+
+	<div id="vcomments"></div>
+
+
+<script>
+	
+		// 评论
+		new Valine({
+			av: AV,
+			el: '#vcomments',
+			notify: false,
+			verify: false,
+			path: window.location.pathname,
+			appId: '',
+			appKey: '',
+			placeholder: '请输入评论',
+			avatar: 'retro',
+			recordIP: false
+		})
+	
+	
+</script>
 	</div>
 	<div id="footer">
 	<p>
