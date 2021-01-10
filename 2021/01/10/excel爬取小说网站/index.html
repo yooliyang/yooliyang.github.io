@@ -152,7 +152,7 @@
 <div id="article-content">
 	<p>#提取某本书每个目录网址<br>import re<br>import requests #加载requests模块,这是第三方库,需要安装后使用<br>import xlwt #加载excel的写入模块<br>import xlrd #读取模块</p>
 <p>#获取网页<br>url=’<a target="_blank" rel="noopener" href="https://www.xs4.cc/0_4/&#39;">https://www.xs4.cc/0_4/&#39;</a> #需要进行爬虫的网址<br>url2=re.findall(‘<a target="_blank" rel="noopener" href="https://www.xs4.cc/(.*?)/&#39;,url)[0]">https://www.xs4.cc/(.*?)/&#39;,url)[0]</a> #提取书名最后一段<br>req=requests.get(url) #获取网页内容<br>req.encoding=’gbk’ #将编码转为GBK,解决乱码问题</p>
-<p>#获取书名<br>book_name=re.findall(‘</p><h1>(.*?)</h1>‘,req.text)[0] <p></p>
+<p>#获取书名<br>// book_name=re.findall(‘</p><h1>(.*?)</h1>‘,req.text)[0] <p></p>
 <p>#获取目录<br>mulu=re.findall(‘html”&gt;(.*?)‘,req.text)<br>wangzhi=re.findall(f’<a href="/{url2}/(.*?).html">‘,req.text,re.S)</a></p>
 <p>#生成字典，主要是为了取键值对<br>dict1={}<br>for i in range(9,len(mulu)):<br>    dict1[mulu[i]]=f’{url}{wangzhi[i]}.html’ #将目录和网址存放到字典中</p>
 <p>#存入excel中<br>excel1=xlwt.Workbook() #实例化一个excel<br>worksheet=excel1.add_sheet(f’{book_name}’) #新建一个sheet<br>worksheet.write(0,0,’目录’) #行,列,值<br>worksheet.write(0,1,’网址’) #行,列,值<br>row=1<br>for k,v in dict1.items(): #遍历字典的键与值<br>    worksheet.write(row,0,k) #将目录写到excel<br>    worksheet.write(row,1,v) #将网址写到excel<br>    row+=1 #相当于行号，第0行被标题用了，不写的话，只会写在同一行<br>excel1.save(f’d:/{book_name}.xls’) #保存文件</p>
